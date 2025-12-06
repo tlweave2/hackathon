@@ -1,0 +1,25 @@
+{
+  "linkedinCookies": [
+    {
+      "name": "li_at",
+      "value": "YOUR_ACTUAL_COOKIE_VALUE_HERE",
+      "domain": ".linkedin.com",
+      "path": "/",
+      "expires": 1735689600,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    }
+  ],
+  "indeedCookies": [],
+  "anthropicApiKey": "sk-ant-api03-YOUR_KEY_HERE",
+  "firstName": "Tim",
+  "lastName": "Weaver",
+  "email": "your.email@example.com",
+  "phone": "555-123-4567",
+  "careerContext": "Software engineer with full-stack experience in React, Node.js, and cloud platforms. Recently completed SE degree at ASU. Experience with AI API integration, video processing, and payment systems.",
+  "jobKeywords": "software engineer",
+  "jobLocation": "San Francisco Bay Area",
+  "maxJobsToProcess": 3,
+  "validateSessionsFirst": true
+}

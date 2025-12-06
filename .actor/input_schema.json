@@ -1,0 +1,105 @@
+{
+  "title": "AutoApply Agent Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "linkedinCookies": {
+      "title": "LinkedIn Cookies (JSON array)",
+      "type": "array",
+      "description": "Export from Cookie-Editor while logged into LinkedIn",
+      "editor": "json",
+      "prefill": []
+    },
+    "indeedCookies": {
+      "title": "Indeed Cookies (JSON array)",
+      "type": "array",
+      "description": "Export from Cookie-Editor while logged into Indeed",
+      "editor": "json",
+      "prefill": []
+    },
+    "anthropicApiKey": {
+      "title": "Anthropic API Key",
+      "type": "string",
+      "description": "Your Claude API key from console.anthropic.com for form filling intelligence",
+      "editor": "textfield",
+      "isSecret": true
+    },
+    "firstName": {
+      "title": "First Name",
+      "type": "string",
+      "description": "Your first name for applications",
+      "editor": "textfield"
+    },
+    "lastName": {
+      "title": "Last Name",
+      "type": "string",
+      "description": "Your last name for applications",
+      "editor": "textfield"
+    },
+    "email": {
+      "title": "Email",
+      "type": "string",
+      "description": "Your contact email",
+      "editor": "textfield"
+    },
+    "phone": {
+      "title": "Phone Number",
+      "type": "string",
+      "description": "Your phone number (optional)",
+      "editor": "textfield"
+    },
+    "careerContext": {
+      "title": "Career Context",
+      "type": "string",
+      "description": "Brief summary of your skills and experience for Claude to use when filling forms",
+      "editor": "textarea",
+      "prefill": "Software engineer with full-stack experience in React, Node.js, and cloud platforms."
+    },
+    "resumeUrl": {
+      "title": "Resume URL",
+      "type": "string",
+      "description": "Public URL to your resume PDF (optional)",
+      "editor": "textfield"
+    },
+    "jobKeywords": {
+      "title": "Job Keywords",
+      "type": "string",
+      "description": "Keywords to search for (e.g., 'software engineer')",
+      "editor": "textfield",
+      "prefill": "software engineer"
+    },
+    "jobLocation": {
+      "title": "Job Location",
+      "type": "string",
+      "description": "Desired location (e.g., 'San Francisco, CA' or 'Remote')",
+      "editor": "textfield",
+      "prefill": "Remote"
+    },
+    "maxJobsToProcess": {
+      "title": "Max Jobs to Process",
+      "type": "integer",
+      "description": "Maximum number of jobs to apply to (default: 10)",
+      "default": 10,
+      "minimum": 1,
+      "maximum": 100
+    },
+    "validateSessionsFirst": {
+      "title": "Validate Sessions First",
+      "type": "boolean",
+      "description": "Test all cookies before starting job applications (recommended)",
+      "default": true
+    },
+    "skipExpiredSessions": {
+      "title": "Skip Expired Sessions",
+      "type": "boolean",
+      "description": "Skip jobs if session has expired (recommended)",
+      "default": true
+    }
+  },
+  "required": [
+    "anthropicApiKey",
+    "firstName",
+    "lastName",
+    "email"
+  ]
+}
