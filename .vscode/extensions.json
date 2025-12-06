@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "apify.apify",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "ms-azuretools.vscode-docker",
+    "github.copilot"
+  ]
+}

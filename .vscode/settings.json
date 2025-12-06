@@ -1,0 +1,13 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/storage": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/storage": true
+  }
+}
