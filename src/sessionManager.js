@@ -1,39 +1,56 @@
 // sessionManager.js — cookie loading and platform verification
 
-async function loadCookies(platform, storage) {
-    // Fetch uploaded cookie file from key-value store or Actor input.
-    return storage[platform] ?? [];
-}
-
-function validateCookies(cookies) {
-    return Array.isArray(cookies);
-}
-
 async function injectCookies(context, cookies) {
-    if (!validateCookies(cookies)) return false;
-    await context.addCookies(cookies);
-    return true;
+    if (!Array.isArray(cookies) || cookies.length === 0) {
+        return false;
+    }
+    
+    try {
+        await context.addCookies(cookies);
+        return true;
+    } catch (error) {
+        console.error('Cookie injection failed:', error);
+        return false;
+    }
 }
 
 async function verifyLoggedIn(page, platform) {
-    // Placeholder: platform-specific selectors
-    return { loggedIn: true, message: `Assumed logged in on ${platform}` };
+    const checks = {
+        'linkedin.com': async () => {
+            // Wait for either logged-in nav or sign-in button
+            try {
+                await page.waitForSelector('nav.global-nav', { timeout: 5000 });
+                return { loggedIn: true, message: 'LinkedIn nav detected' };
+            } catch {
+                return { loggedIn: false, message: 'Not logged in to LinkedIn' };
+            }
+        },
+        'indeed.com': async () => {
+            try {
+                await page.waitForSelector('[data-gnav-element-name]', { timeout: 5000 });
+                return { loggedIn: true, message: 'Indeed nav detected' };
+            } catch {
+                return { loggedIn: false, message: 'Not logged in to Indeed' };
+            }
+        }
+    };
+
+    const checker = checks[platform];
+    if (!checker) {
+        return { loggedIn: false, message: `Unknown platform: ${platform}` };
+    }
+
+    return await checker();
 }
 
 function getCookiesForJob(job, cookieMap) {
     const hostname = new URL(job.url).hostname;
-    if (hostname.includes('linkedin.com')) {
-        return cookieMap.linkedin;
-    }
-    if (hostname.includes('indeed.com')) {
-        return cookieMap.indeed;
-    }
+    if (hostname.includes('linkedin.com')) return cookieMap.linkedin || [];
+    if (hostname.includes('indeed.com')) return cookieMap.indeed || [];
     return [];
 }
 
 module.exports = {
-    loadCookies,
-    validateCookies,
     injectCookies,
     verifyLoggedIn,
     getCookiesForJob,
