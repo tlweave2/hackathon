@@ -1,11 +1,10 @@
-// formFiller.js — PRODUCTION VERSION with Claude integration
+// formFiller.js — PRODUCTION VERSION with Apify's Claude integration
 
-const Anthropic = require('@anthropic-ai/sdk');
+const { Actor } = require('apify');
 
-async function fillForm({ page, job, log, anthropicApiKey, userContext }) {
+async function fillForm({ page, job, log, userContext }) {
     log?.info('Starting Claude-powered form fill', { job: job.url });
     
-    const anthropic = new Anthropic({ apiKey: anthropicApiKey });
     let stepCount = 0;
     const maxSteps = 10; // Prevent infinite loops
 
@@ -17,24 +16,8 @@ async function fillForm({ page, job, log, anthropicApiKey, userContext }) {
         const screenshot = await page.screenshot({ fullPage: false });
         const base64Image = screenshot.toString('base64');
 
-        // Ask Claude what to do
-        const response = await anthropic.messages.create({
-            model: 'claude-sonnet-4-20250514',
-            max_tokens: 1000,
-            messages: [{
-                role: 'user',
-                content: [
-                    {
-                        type: 'image',
-                        source: {
-                            type: 'base64',
-                            media_type: 'image/png',
-                            data: base64Image
-                        }
-                    },
-                    {
-                        type: 'text',
-                        text: `You are helping fill out a job application form. 
+        // Use Apify's Claude integration
+        const prompt = `You are helping fill out a job application form. 
 
 User context:
 - Name: ${userContext.firstName} ${userContext.lastName}
@@ -52,14 +35,26 @@ Analyze this screenshot and tell me what to do next. Respond ONLY with valid JSO
 }
 
 If the form is complete or submitted, use action "done".
-If you see "Easy Apply" or "Apply" button, click it first.`
-                    }
-                ]
-            }],
+If you see "Easy Apply" or "Apply" button, click it first.`;
+
+        // Call Apify's Claude integration
+        const claudeRun = await Actor.call('apify/claude', {
+            prompt: prompt,
+            model: 'claude-sonnet-4-20250514',
+            maxTokens: 1000,
+            images: [{
+                type: 'base64',
+                data: base64Image,
+                mediaType: 'image/png'
+            }]
         });
 
-        // Parse Claude's response
-        const claudeText = response.content[0].text;
+        if (!claudeRun || !claudeRun.output || !claudeRun.output.text) {
+            log?.error('Claude integration returned no response');
+            break;
+        }
+
+        const claudeText = claudeRun.output.text;
         log?.info('Claude response:', { claudeText });
 
         let action;

@@ -108,7 +108,6 @@ async function applyToJob({ job, browser, cookieMap, log, anthropicApiKey, userC
             page, 
             job, 
             log, 
-            anthropicApiKey, 
             userContext 
         });
 

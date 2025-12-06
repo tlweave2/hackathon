@@ -17,13 +17,6 @@
       "editor": "json",
       "prefill": []
     },
-    "anthropicApiKey": {
-      "title": "Anthropic API Key",
-      "type": "string",
-      "description": "Your Claude API key from console.anthropic.com for form filling intelligence",
-      "editor": "textfield",
-      "isSecret": true
-    },
     "firstName": {
       "title": "First Name",
       "type": "string",
