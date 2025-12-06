@@ -1,0 +1,22 @@
+{
+  "name": "hackathon-autapply-agent",
+  "version": "0.1.0",
+  "description": "AutoApply Agent: cookie-authenticated job apply Actor for the hackathon.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node -e \"console.log('No automated tests yet')\""
+  },
+  "keywords": ["apify", "automation", "job-apply"],
+  "author": "tlweave2",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@apify/cheerio-crawler": "^0.5.0",
+    "anthropic": "^1.2.0",
+    "apify": "^2.0.0",
+    "playwright": "^1.64.0"
+  }
+}
