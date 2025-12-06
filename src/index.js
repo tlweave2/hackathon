@@ -54,8 +54,13 @@ Actor.main(async () => {
 
     // STEP 2: Scout for jobs
     log.info('Scouting for jobs...');
-    const jobs = await jobScout(input);
-    log.info(`Found ${jobs.length} jobs to process`);
+    const allJobs = await jobScout(input);
+    
+    // Limit to maxJobsToProcess
+    const maxJobs = input.maxJobsToProcess || 10;
+    const jobs = allJobs.slice(0, maxJobs);
+    
+    log.info(`Found ${allJobs.length} jobs, processing ${jobs.length} (max: ${maxJobs})`);
 
     if (jobs.length === 0) {
         log.warn('No jobs found matching criteria');
