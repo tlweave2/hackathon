@@ -1,0 +1,65 @@
+{
+    "title": "EasyJobs - Multi-Platform Job Scraper",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "jobKeywords": {
+            "title": "Job Keywords",
+            "type": "array",
+            "description": "Keywords to search for jobs (e.g., 'software engineer', 'data scientist')",
+            "editor": "stringList",
+            "prefill": ["software engineer", "frontend developer"]
+        },
+        "location": {
+            "title": "Job Location",
+            "type": "string",
+            "description": "Location for job search (e.g., 'Remote', 'New York', 'San Francisco')",
+            "editor": "textfield",
+            "prefill": "Remote"
+        },
+        "platforms": {
+            "title": "Job Platforms",
+            "type": "array",
+            "description": "Which job platforms to scrape",
+            "editor": "select",
+            "items": {
+                "type": "string",
+                "enum": ["linkedin", "indeed", "simplyhired"]
+            },
+            "prefill": ["linkedin", "indeed", "simplyhired"]
+        },
+        "maxJobsPerPlatform": {
+            "title": "Max Jobs per Platform",
+            "type": "integer",
+            "description": "Maximum number of jobs to scrape from each platform",
+            "default": 25,
+            "minimum": 1,
+            "maximum": 100
+        },
+        "experienceLevel": {
+            "title": "Experience Level",
+            "type": "string",
+            "description": "Filter by experience level",
+            "editor": "select",
+            "enum": ["any", "entry", "mid", "senior", "executive"],
+            "default": "any"
+        },
+        "jobType": {
+            "title": "Job Type",
+            "type": "string",
+            "description": "Filter by job type",
+            "editor": "select",
+            "enum": ["any", "full-time", "part-time", "contract", "internship"],
+            "default": "any"
+        },
+        "postedWithin": {
+            "title": "Posted Within",
+            "type": "string",
+            "description": "Filter by posting date",
+            "editor": "select",
+            "enum": ["any", "24hours", "week", "month"],
+            "default": "week"
+        }
+    },
+    "required": ["jobKeywords", "location"]
+}

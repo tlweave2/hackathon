@@ -1,0 +1,16 @@
+{
+  "linkedinCookies": "[{\n    \"name\": \"li_at\",\n    \"value\": \"dummy-linkedin-cookie\",\n    \"domain\": \".linkedin.com\",\n    \"path\": \"/\",\n    \"expires\": 1893456000,\n    \"httpOnly\": true,\n    \"secure\": true\n  }]",
+  "indeedCookies": "[{\n    \"name\": \"indeed_at\",\n    \"value\": \"dummy-indeed-cookie\",\n    \"domain\": \".indeed.com\",\n    \"path\": \"/\",\n    \"expires\": 1893456000,\n    \"httpOnly\": true,\n    \"secure\": true\n  }]",
+  "jobKeywords": ["frontend", "javascript"],
+  "jobLocation": "Remote",
+  "firstName": "Alex",
+  "lastName": "Candidate",
+  "email": "alex.candidate@example.com",
+  "phone": "+1-555-0100",
+  "careerContext": "Senior frontend engineer with 8 years of experience in React and TypeScript.",
+  "anthropicApiKey": "sk-ant-1234567890abcdefghijklmn",
+  "resumeUrl": "https://example.com/resume.pdf",
+  "skipExpiredSessions": true,
+  "validateSessionsFirst": false,
+  "useOpenRouterSuggestions": false
+}

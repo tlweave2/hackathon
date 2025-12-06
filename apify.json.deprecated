@@ -1,0 +1,113 @@
+{
+  "actorSpecification": 1,
+  "name": "autoapply-agent",
+  "title": "AutoApply Agent",
+  "description": "Automates job applications on LinkedIn, Glassdoor, and Indeed using pre-authenticated sessions and AI assistance.",
+  "version": "0.0",
+  "buildTag": "latest",
+  "dockerfile": "Dockerfile",
+  "environmentVariables": {
+    "APIFY_DEFAULT_KEY_VALUE_STORE_ID": "autoapply-store",
+    "APIFY_DEFAULT_DATASET_ID": "autoapply-dataset"
+  },
+  "input": {
+    "schema": {
+      "schemaVersion": 1,
+      "title": "AutoApply Agent Input",
+      "type": "object",
+      "properties": {
+        "linkedinCookies": {
+          "title": "LinkedIn cookies JSON",
+          "type": "string",
+          "description": "Raw JSON string exported from Cookie-Editor containing LinkedIn cookies.",
+          "editor": "json"
+        },
+        "indeedCookies": {
+          "title": "Indeed cookies JSON",
+          "type": "string",
+          "description": "Raw JSON string exported from Cookie-Editor containing Indeed cookies.",
+          "editor": "json"
+        },
+        "jobKeywords": {
+          "title": "Job keywords",
+          "type": "array",
+          "description": "Primary keywords to search for job listings.",
+          "items": {
+            "type": "string",
+            "title": "Keyword"
+          }
+        },
+        "jobLocation": {
+          "title": "Job location",
+          "type": "string",
+          "description": "City, state, or region for job search."
+        },
+        "firstName": {
+          "title": "First name",
+          "type": "string"
+        },
+        "lastName": {
+          "title": "Last name",
+          "type": "string"
+        },
+        "email": {
+          "title": "Email address",
+          "type": "string"
+        },
+        "phone": {
+          "title": "Phone number",
+          "type": "string"
+        },
+        "careerContext": {
+          "title": "Career context",
+          "type": "string",
+          "description": "Overview of skills, experience, and preferences for Claude."
+        },
+        "anthropicApiKey": {
+          "title": "Anthropic API key",
+          "type": "string"
+        },
+        "resumeUrl": {
+          "title": "Resume URL",
+          "type": "string",
+          "description": "Optional link to a resume PDF.",
+          "nullable": true
+        },
+        "skipExpiredSessions": {
+          "title": "Skip expired sessions",
+          "type": "boolean",
+          "default": true
+        },
+        "validateSessionsFirst": {
+          "title": "Validate sessions before scouting",
+          "type": "boolean",
+          "default": true
+        },
+        "useOpenRouterSuggestions": {
+          "title": "Use OpenRouter guidance",
+          "type": "boolean",
+          "default": false,
+          "description": "Call the apify/openrouter proxy to generate manual application guidance when automation is unavailable. Requires APIFY_TOKEN access."
+        },
+        "openRouterModel": {
+          "title": "OpenRouter model",
+          "type": "string",
+          "default": "openrouter/auto",
+          "description": "Model identifier sent to the OpenRouter proxy (for example, openrouter/auto or anthropic/claude-3.5-sonnet)."
+        }
+      },
+      "required": [
+        "linkedinCookies",
+        "indeedCookies",
+        "jobKeywords",
+        "jobLocation",
+        "firstName",
+        "lastName",
+        "email",
+        "phone",
+        "careerContext",
+        "anthropicApiKey"
+      ]
+    }
+  }
+}

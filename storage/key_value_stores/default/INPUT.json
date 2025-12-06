@@ -1,0 +1,20 @@
+{
+  "skipExpiredSessions": true,
+  "validateSessionsFirst": true,
+  "useOpenRouterSuggestions": false,
+  "openRouterModel": "openrouter/auto",
+  "linkedinCookies": "[{\"name\":\"li_at\",\"value\":\"dummy_linkedin_token\",\"domain\":\".linkedin.com\",\"path\":\"/\",\"expires\":1893456000},{\"name\":\"JSESSIONID\",\"value\":\"ajax:dummysession\",\"domain\":\".linkedin.com\",\"path\":\"/\",\"expires\":1893456000}]",
+  "indeedCookies": "[{\"name\":\"CTK\",\"value\":\"dummy_ctk\",\"domain\":\".indeed.com\",\"path\":\"/\",\"expires\":1893456000},{\"name\":\"indeedcsrftoken\",\"value\":\"dummy_csrftoken\",\"domain\":\".indeed.com\",\"path\":\"/\",\"expires\":1893456000}]",
+  "jobKeywords": [
+    "frontend",
+    "react"
+  ],
+  "jobLocation": "Remote",
+  "firstName": "Alex",
+  "lastName": "Doe",
+  "email": "alex.doe@example.com",
+  "phone": "+1-555-0101",
+  "careerContext": "Frontend engineer with 5+ years of experience building React and TypeScript applications.",
+  "anthropicApiKey": "sk-ant-abcdefghijklmnopqrstuvwxyz1234",
+  "resumeUrl": "https://example.com/resume.pdf"
+}
