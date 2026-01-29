@@ -1,4 +1,4 @@
-# Apify Documentation
+# Apify
 
 > The entire content of Apify documentation is available in a single Markdown file at https://docs.apify.com/llms-full.txt
 
